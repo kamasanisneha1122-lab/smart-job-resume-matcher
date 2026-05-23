@@ -5,7 +5,6 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 st.set_page_config(page_title="Smart Job Matcher", layout="wide")
-
 st.title("🚀 Smart Job Resume Matcher")
 st.write("Check how well your resume matches the job role")
 
