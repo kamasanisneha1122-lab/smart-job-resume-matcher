@@ -4,11 +4,14 @@ import matplotlib.pyplot as plt
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-st.set_page_config(page_title="Smart Job Matcher", layout="wide")
+# Page setup
+st.set_page_config(page_title="Smart Job Matcher", layout="centered")
+
 st.title("🚀 Smart Job Resume Matcher")
 st.write("Check how well your resume matches the job role")
 
 
+# Read PDF
 def read_pdf(file):
     reader = PyPDF2.PdfReader(file)
     text = ""
@@ -17,6 +20,7 @@ def read_pdf(file):
     return text
 
 
+# Inputs
 resume = st.file_uploader("📄 Upload Resume PDF", type="pdf")
 job_desc = st.text_area("💼 Paste Job Description")
 
@@ -41,13 +45,20 @@ if st.button("🔍 Match Resume"):
         st.progress(int(match_percent))
         st.success(f"{match_percent}% Match")
 
-        # Graph
-        fig, ax = plt.subplots(figsize=(2,2))
-        ax.bar(["Match Score"], [match_percent])
-        ax.set_ylim(0, 100)
-        ax.set_yticks(range(0,101,10))
-        ax.tick_params(labelsize=5)
-        st.pyplot(fig)
+        # Small Fixed Graph
+        col1, col2, col3 = st.columns([2, 4, 2])
+
+        with col2:
+            fig, ax = plt.subplots(figsize=(4, 4))
+
+            ax.bar(["M"], [match_percent])
+
+            ax.set_ylim(0, 100)
+            ax.set_yticks(range(0, 101, 10))
+
+            ax.tick_params(labelsize=3)
+
+            st.pyplot(fig, use_container_width=False)
 
         # ATS Check
         st.subheader("ATS Resume Check")
