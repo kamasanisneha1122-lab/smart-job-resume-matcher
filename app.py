@@ -43,9 +43,11 @@ if st.button("🔍 Match Resume"):
         st.success(f"{match_percent}% Match")
 
         # Graph
-        fig, ax = plt.subplots()
+        fig, ax = plt.subplots(figsize=(2,2))
         ax.bar(["Match Score"], [match_percent])
         ax.set_ylim(0, 100)
+        ax.set_yticks(range(0,101,10))
+        ax.tick_params(labelsize=5)
         st.pyplot(fig)
 
         # ATS Check
