@@ -56,7 +56,7 @@ if st.button("🔍 Match Resume"):
             ax.set_ylim(0, 100)
             ax.set_yticks(range(0, 101, 10))
 
-            ax.tick_params(labelsize=3)
+            ax.tick_params(labelsize=9)
 
             st.pyplot(fig, use_container_width=False)
 
